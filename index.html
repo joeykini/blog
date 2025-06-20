@@ -66,7 +66,7 @@
                 <div class="timeline-widget">
                     <div class="timeline">
                         <div class="timeline-item">
-                            <div class="timeline-date">2024年01月</div>
+                            <div class="timeline-date" onclick="toggleTimeline(this)">2024年01月</div>
                             <div class="timeline-posts">
                                 <a href="/posts/minimalist-design-principles/" class="timeline-link">極簡設計的五大原則</a>
                                 <a href="/posts/welcome-to-minimal-blog/" class="timeline-link">歡迎來到極簡部落格</a>
@@ -79,7 +79,14 @@
     </main>
 
     <footer class="footer">
-        <p>&copy; 2024 Elias Sun. 所有權利保留.</p>
+        <p>&copy; 2025 Elias Sun. 所有權利保留.</p>
     </footer>
+
+    <script>
+        function toggleTimeline(element) {
+            const posts = element.nextElementSibling;
+            posts.classList.toggle('expanded');
+        }
+    </script>
 </body>
 </html>

@@ -21,9 +21,9 @@
     --spacing-md: 1.5rem;
     --spacing-lg: 2rem;
     --spacing-xl: 3rem;
-    --content-width: 800px;
-    --sidebar-width: 280px;
-    --container-gap: 2rem;
+    --content-width: 700px;
+    --sidebar-width: 320px;
+    --container-gap: 3rem;
 }
 
 body {
@@ -95,6 +95,7 @@ a {
     max-width: calc(var(--content-width) + var(--sidebar-width) + var(--container-gap));
     margin: 0 auto;
     padding: var(--spacing-xl) var(--spacing-sm);
+    min-height: calc(100vh - 120px);
 }
 
 .container {
@@ -102,6 +103,7 @@ a {
     grid-template-columns: var(--content-width) var(--sidebar-width);
     gap: var(--container-gap);
     align-items: start;
+    justify-content: center;
 }
 
 .content {
@@ -169,8 +171,8 @@ a {
 }
 
 .post-item {
-    margin-bottom: var(--spacing-lg);
-    padding-bottom: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-md);
     border-bottom: 1px solid var(--color-border);
 }
 
@@ -261,12 +263,25 @@ a {
     font-weight: 600;
     color: var(--color-text);
     margin-bottom: var(--spacing-xs);
+    cursor: pointer;
+    padding: 0.25rem 0;
+    border-radius: 0.25rem;
+    transition: background-color 0.2s ease;
+}
+
+.timeline-date:hover {
+    background-color: var(--color-bg-alt);
 }
 
 .timeline-posts {
-    display: flex;
+    display: none;
     flex-direction: column;
     gap: var(--spacing-xs);
+    margin-top: var(--spacing-xs);
+}
+
+.timeline-posts.expanded {
+    display: flex;
 }
 
 .timeline-link {
@@ -391,7 +406,7 @@ a {
 /* 頁腳 */
 .footer {
     margin-top: var(--spacing-xl);
-    padding: var(--spacing-lg) 0;
+    padding: var(--spacing-xl) 0 var(--spacing-lg) 0;
     border-top: 1px solid var(--color-border);
     text-align: center;
     color: var(--color-text-light);
@@ -403,6 +418,7 @@ a {
     .container {
         grid-template-columns: 1fr;
         gap: var(--spacing-lg);
+        justify-content: center;
     }
     
     .sidebar {
