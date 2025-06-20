@@ -339,4 +339,49 @@ a:hover {
     .post-content {
         font-size: 1rem;
     }
+}
+
+/* 評論區域樣式 */
+.comments-section {
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--color-border);
+}
+
+.comments-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-text);
+}
+
+.comments-description {
+    color: var(--color-text-light);
+    font-size: 0.875rem;
+    margin-bottom: var(--spacing-md);
+}
+
+#giscus-container {
+    margin-top: var(--spacing-md);
+}
+
+/* Giscus 主題自定義 */
+.giscus {
+    max-width: 100%;
+}
+
+.giscus-frame {
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-border);
+}
+
+@media (max-width: 768px) {
+    .comments-section {
+        margin-top: var(--spacing-lg);
+        padding-top: var(--spacing-md);
+    }
+    
+    .comments-title {
+        font-size: 1.125rem;
+    }
 } 
