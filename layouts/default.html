@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= @item[:title] || "極簡部落格" %></title>
+    <meta name="description" content="<%= @item[:description] || "一個極簡風格的部落格" %>">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <a href="/" class="nav-brand">極簡部落格</a>
+            <div class="nav-links">
+                <a href="/" class="nav-link">首頁</a>
+                <a href="/about/" class="nav-link">關於</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <%= yield %>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; <%= Date.today.year %> 極簡部落格. 所有權利保留.</p>
+    </footer>
+</body>
+</html> 

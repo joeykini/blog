@@ -1,0 +1,13 @@
+{
+  "name": "minimal-blog",
+  "version": "1.0.0",
+  "description": "A minimal blog built with Nanoc",
+  "scripts": {
+    "build": "bundle install && bundle exec nanoc",
+    "dev": "bundle exec nanoc view",
+    "deploy": "bundle exec nanoc && vercel --prod"
+  },
+  "keywords": ["blog", "nanoc", "minimal", "static"],
+  "author": "Your Name",
+  "license": "MIT"
+} 

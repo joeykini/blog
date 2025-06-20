@@ -1,0 +1,57 @@
+#!/usr/bin/env ruby
+
+# 預處理
+preprocess do
+  # 為文章添加類型標識
+  @items.select { |item| item.identifier.to_s.start_with?('/posts/') }.each do |item|
+    item[:kind] = 'article'
+  end
+end
+
+# 編譯規則
+compile '/**/*.html' do
+  layout '/default.*'
+  write item.identifier.to_s
+end
+
+compile '/**/*.md' do
+  filter :kramdown
+  layout '/default.*'
+  write item.identifier.without_ext + '/index.html'
+end
+
+compile '/posts/**/*.md' do
+  filter :kramdown
+  layout '/post.*'
+  if item[:slug]
+    write '/posts/' + item[:slug] + '/index.html'
+  else
+    write item.identifier.without_ext + '/index.html'
+  end
+end
+
+compile '/**/*.css' do
+  filter :rainpress
+  write item.identifier.to_s
+end
+
+compile '/**/*.js' do
+  filter :terser
+  write item.identifier.to_s
+end
+
+# 路由規則
+route '/**/*.{html,md}' do
+  if item.identifier =~ '/index.*'
+    '/index.html'
+  else
+    item.identifier.without_ext + '/index.html'
+  end
+end
+
+route '/**/*' do
+  item.identifier.to_s
+end
+
+# 佈局規則
+layout '/**/*', :erb 

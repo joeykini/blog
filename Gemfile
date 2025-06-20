@@ -1,0 +1,11 @@
+source 'https://rubygems.org'
+
+gem 'nanoc', '~> 4.12'
+gem 'kramdown'
+gem 'rouge'
+gem 'adsf'
+gem 'guard-nanoc'
+gem 'w3c_validators'
+gem 'nokogiri'
+gem 'rainpress'
+gem 'terser' 

@@ -1,0 +1,38 @@
+---
+title: "歡迎來到極簡部落格"
+description: "一個專注於內容的極簡風格部落格"
+---
+
+<div class="hero">
+    <h1 class="hero-title">極簡部落格</h1>
+    <p class="hero-subtitle">專注於內容，回歸文字的本質</p>
+</div>
+
+<section class="posts-section">
+    <h2 class="posts-title">最新文章</h2>
+    <ul class="posts-list">
+        <% sorted_articles.each do |post| %>
+            <li class="post-item">
+                <a href="<%= post.path %>" class="post-link">
+                    <h3 class="post-item-title"><%= post[:title] %></h3>
+                    <div class="post-item-meta">
+                        <time class="post-date" datetime="<%= post[:date] %>">
+                            <%= Date.parse(post[:date].to_s).strftime("%Y年%m月%d日") if post[:date] %>
+                        </time>
+                        <% if post[:tags] && post[:tags].any? %>
+                            <span>·</span>
+                            <div class="post-tags">
+                                <% post[:tags].first(2).each do |tag| %>
+                                    <span class="tag">#<%= tag %></span>
+                                <% end %>
+                            </div>
+                        <% end %>
+                    </div>
+                    <% if post[:excerpt] %>
+                        <p class="post-item-excerpt"><%= post[:excerpt] %></p>
+                    <% end %>
+                </a>
+            </li>
+        <% end %>
+    </ul>
+</section> 
