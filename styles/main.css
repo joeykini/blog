@@ -103,7 +103,8 @@ a {
     grid-template-columns: var(--content-width) var(--sidebar-width);
     gap: var(--container-gap);
     align-items: start;
-    justify-content: center;
+    justify-content: start;
+    margin-left: 2rem;
 }
 
 .content {
@@ -112,8 +113,8 @@ a {
 
 /* 首頁樣式 */
 .hero {
-    text-align: center;
-    margin-bottom: var(--spacing-xl);
+    text-align: left;
+    margin-bottom: var(--spacing-lg);
 }
 
 .hero-title {
@@ -125,8 +126,8 @@ a {
 
 .social-links {
     display: flex;
-    justify-content: center;
-    margin-bottom: var(--spacing-sm);
+    justify-content: flex-start;
+    margin-bottom: var(--spacing-md);
 }
 
 .social-link {
@@ -163,7 +164,7 @@ a {
     font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: var(--spacing-lg);
-    text-align: center;
+    text-align: left;
 }
 
 .posts-list {
@@ -419,6 +420,7 @@ a {
         grid-template-columns: 1fr;
         gap: var(--spacing-lg);
         justify-content: center;
+        margin-left: 0;
     }
     
     .sidebar {
@@ -429,6 +431,18 @@ a {
     .timeline-widget {
         max-width: 400px;
         margin: 0 auto;
+    }
+    
+    .hero {
+        text-align: center;
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
+    
+    .posts-title {
+        text-align: center;
     }
 }
 
@@ -470,6 +484,18 @@ a {
     
     .main {
         padding: var(--spacing-lg) var(--spacing-sm);
+    }
+    
+    .hero {
+        text-align: center;
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
+    
+    .posts-title {
+        text-align: center;
     }
 }
 
