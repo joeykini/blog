@@ -92,7 +92,7 @@ a {
 
 /* 主要內容 */
 .main {
-    max-width: calc(var(--content-width) + var(--sidebar-width) + var(--container-gap) + 4rem);
+    max-width: calc(var(--content-width) + var(--sidebar-width) + var(--container-gap) + 8rem);
     margin: 0 auto;
     padding: var(--spacing-xl) var(--spacing-sm);
     min-height: calc(100vh - 120px);
@@ -104,7 +104,7 @@ a {
     gap: var(--container-gap);
     align-items: start;
     justify-content: start;
-    margin-left: 4rem;
+    margin-left: 6rem;
 }
 
 .content {
@@ -211,6 +211,7 @@ a {
 .sidebar {
     position: sticky;
     top: var(--spacing-lg);
+    margin-top: calc(var(--spacing-xl) + 3rem);
 }
 
 .timeline-widget {
@@ -426,6 +427,7 @@ a {
     .sidebar {
         position: static;
         order: -1;
+        margin-top: 0;
     }
     
     .timeline-widget {
