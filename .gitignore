@@ -5,7 +5,7 @@ crash.log
 
 # Ruby
 .bundle/
-vendor/
+vendor/bundle/
 Gemfile.lock
 
 # Node.js
@@ -28,4 +28,8 @@ yarn-error.log*
 Thumbs.db
 
 # Logs
-*.log 
+*.log
+
+# Local articles (not to be pushed to GitHub)
+posts/minimalist-design-principles/
+posts/multimedia-example/ 
