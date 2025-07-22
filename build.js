@@ -64,22 +64,22 @@ async function processPosts() {
 
   for (const file of files) {
     if (path.extname(file) === '.md') {
-      console.log(`[Debug] 正在處理文件: ${file}`);
+      console.log(`[Debug] 正在處理文件: ${file}`); // 新增日誌
       const filePath = path.join(postsDir, file);
       const content = await fs.readFile(filePath, 'utf-8');
       const { data, content: markdownContent } = matter(content);
       
-      // 健壯性檢查
+      // --- 新增的健壯性檢查 ---
       if (!data.date) {
           console.warn(`[警告] 跳過 ${file}：缺少 'date' 字段。`);
-          continue;
+          continue; // 跳過這個文件，繼續處理下一個
       }
       const date = new Date(data.date);
       if (isNaN(date.getTime())) {
           console.warn(`[警告] 跳過 ${file}：無效的日期格式 "${data.date}"。請確保使用 YYYY-MM-DD 格式。`);
-          continue;
+          continue; // 跳過這個文件，繼續處理下一個
       }
-      // 檢查結束
+      // --- 檢查結束 ---
 
       const post = {
         ...data,
@@ -150,9 +150,9 @@ async function generatePostHTML(post) {
   console.log(`✅ 生成文章: ${post.title}`);
 }
 
-// 修改 generateIndex 函數，增加日誌
+// 修改 generateIndex 函數，添加日誌
 async function generateIndex(posts) {
-  // --- 新增日誌 ---
+  // --- 在這裡添加新的日誌 ---
   console.log('🏠 正在生成首頁...');
   console.log('[Debug] 用於生成首頁的文章列表:');
   posts.forEach(p => console.log(`  - 標題: ${p.title}, 日期: ${p.date.toISOString()}`));
