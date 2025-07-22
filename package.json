@@ -1,15 +1,20 @@
 {
-  "name": "minimal-blog",
+  "name": "elias-sun-blog",
   "version": "1.0.0",
-  "description": "A minimal static blog",
+  "description": "Elias Sun 的極簡部落格",
   "scripts": {
-    "start": "python -m http.server 8000",
-    "serve": "python -m http.server 8000"
+    "build": "node build.js",
+    "dev": "node build.js && npx serve output",
+    "deploy": "node build.js && vercel --prod",
+    "new": "node create-post.js"
   },
-  "keywords": ["blog", "minimal", "static", "vercel"],
-  "author": "Your Name",
-  "license": "MIT",
-  "engines": {
-    "node": ">=14"
+  "dependencies": {
+    "marked": "^4.3.0",
+    "gray-matter": "^4.0.3",
+    "fs-extra": "^11.1.1",
+    "serve": "^14.2.0"
+  },
+  "devDependencies": {
+    "vercel": "^32.5.0"
   }
 } 

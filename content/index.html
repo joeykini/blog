@@ -1,38 +1,89 @@
----
-title: "歡迎來到極簡部落格"
-description: "一個專注於內容的極簡風格部落格"
----
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elias Sun</title>
+    <meta name="description" content="Elias Sun 的個人部落格">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/jpeg" href="https://s3.bmp.ovh/imgs/2025/06/21/aa53503d0994dad6.jpg">
+</head>
+<body>
+    <main class="main">
+        <div class="container">
+            <div class="content">
+                <div class="hero">
+                    <h1 class="hero-title">Elias Sun</h1>
+                    <div class="social-links">
+                        <a href="https://x.com/hostulu" target="_blank" rel="noopener noreferrer" class="social-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            </svg>
+                        </a>
+                        <a href="https://t.me/tuluduck" target="_blank" rel="noopener noreferrer" class="social-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
 
-<div class="hero">
-    <h1 class="hero-title">極簡部落格</h1>
-    <p class="hero-subtitle">專注於內容，回歸文字的本質</p>
-</div>
-
-<section class="posts-section">
-    <h2 class="posts-title">最新文章</h2>
-    <ul class="posts-list">
-        <% sorted_articles.each do |post| %>
-            <li class="post-item">
-                <a href="<%= post.path %>" class="post-link">
-                    <h3 class="post-item-title"><%= post[:title] %></h3>
-                    <div class="post-item-meta">
-                        <time class="post-date" datetime="<%= post[:date] %>">
-                            <%= Date.parse(post[:date].to_s).strftime("%Y年%m月%d日") if post[:date] %>
-                        </time>
-                        <% if post[:tags] && post[:tags].any? %>
-                            <span>·</span>
-                            <div class="post-tags">
-                                <% post[:tags].first(2).each do |tag| %>
-                                    <span class="tag">#<%= tag %></span>
+                <section class="posts-section">
+                    <ul class="posts-list">
+                        <% @articles.each do |article| %>
+                        <li class="post-item">
+                            <a href="<%= article.path %>" class="post-link">
+                                <h3 class="post-item-title"><%= article[:title] %></h3>
+                                <div class="post-item-meta">
+                                    <time class="post-date" datetime="<%= article[:date].strftime('%Y-%m-%d') %>">
+                                        <%= article[:date].strftime('%Y年%m月%d日') %>
+                                    </time>
+                                    <span>·</span>
+                                    <div class="post-tags">
+                                        <% article[:tags].each do |tag| %>
+                                        <span class="tag">#<%= tag %></span>
+                                        <% end %>
+                                    </div>
+                                </div>
+                                <p class="post-item-excerpt"><%= article[:excerpt] %></p>
+                            </a>
+                        </li>
+                        <% end %>
+                    </ul>
+                </section>
+            </div>
+            
+            <aside class="sidebar">
+                <div class="timeline-widget">
+                    <div class="timeline">
+                        <% @articles.group_by { |article| article[:date].strftime('%Y年%m月') }.each do |month, articles| %>
+                        <div class="timeline-item">
+                            <div class="timeline-date" onclick="toggleTimeline(this)"><%= month %></div>
+                            <div class="timeline-posts">
+                                <% articles.each do |article| %>
+                                <a href="<%= article.path %>" class="timeline-link"><%= article[:title] %></a>
                                 <% end %>
                             </div>
+                        </div>
                         <% end %>
                     </div>
-                    <% if post[:excerpt] %>
-                        <p class="post-item-excerpt"><%= post[:excerpt] %></p>
-                    <% end %>
-                </a>
-            </li>
-        <% end %>
-    </ul>
-</section> 
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Elias Sun.</p>
+    </footer>
+
+    <script>
+        function toggleTimeline(element) {
+            const posts = element.nextElementSibling;
+            posts.classList.toggle('expanded');
+        }
+    </script>
+</body>
+</html> 

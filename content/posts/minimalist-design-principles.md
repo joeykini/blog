@@ -1,6 +1,6 @@
 ---
-title: "極簡設計的五大原則"
-date: 2024-01-20
+title: ""
+date: 2025-6-21
 slug: "minimalist-design-principles"
 tags: ["設計", "極簡", "原則", "UX"]
 excerpt: "探討極簡設計的核心原則，以及如何將這些原則應用到網頁設計中。"

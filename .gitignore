@@ -1,7 +1,6 @@
 # Nanoc
 output/
 tmp/
-crash.log
 
 # Ruby
 .bundle/
@@ -14,14 +13,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Vercel
-.vercel
-
 # IDE
 .vscode/
 .idea/
-*.swp
-*.swo
 
 # OS
 .DS_Store
@@ -32,4 +26,11 @@ Thumbs.db
 
 # Local articles (not to be pushed to GitHub)
 posts/minimalist-design-principles/
-posts/multimedia-example/ 
+posts/multimedia-example/
+
+# Build artifacts
+output/
+tmp/
+
+# Vercel
+.vercel 

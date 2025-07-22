@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= @item[:title] %> - Elias Sun</title>
+    <meta name="description" content="<%= @item[:excerpt] %>">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/jpeg" href="https://s3.bmp.ovh/imgs/2025/06/21/aa53503d0994dad6.jpg">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="/" class="nav-home">← 回到首頁</a>
+        </div>
+    </nav>
+
+    <main class="main">
+        <div class="container">
+            <article class="article">
+                <header class="article-header">
+                    <h1 class="article-title"><%= @item[:title] %></h1>
+                    <div class="article-meta">
+                        <time class="article-date" datetime="<%= @item[:date].strftime('%Y-%m-%d') %>">
+                            <%= @item[:date].strftime('%Y年%m月%d日') %>
+                        </time>
+                        <div class="article-tags">
+                            <% @item[:tags].each do |tag| %>
+                            <span class="tag">#<%= tag %></span>
+                            <% end %>
+                        </div>
+                    </div>
+                </header>
+
+                <div class="article-content">
+                    <%= yield %>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Elias Sun.</p>
+    </footer>
+</body>
+</html> 
