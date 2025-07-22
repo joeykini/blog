@@ -153,6 +153,16 @@ async function generateIndex(posts) {
     postsByMonth[month].push(post);
   });
   
+  // 讓最新月份預設展開
+  const months = Object.entries(postsByMonth);
+  const timelineHTML = months.map(([month, monthPosts], idx) => `
+                        <div class="timeline-item">
+                            <div class="timeline-date" onclick="toggleTimeline(this)">${month}</div>
+                            <div class="timeline-posts${idx === 0 ? ' expanded' : ''}">
+                                ${monthPosts.map(post => `<a href="${post.path}" class="timeline-link">${post.title}</a>`).join('')}
+                            </div>
+                        </div>`).join('');
+  
   const postsHTML = posts.map(post => `
                         <li class="post-item">
                             <a href="${post.path}" class="post-link">
@@ -169,14 +179,6 @@ async function generateIndex(posts) {
                                 <p class="post-item-excerpt">${post.excerpt}</p>
                             </a>
                         </li>`).join('');
-  
-  const timelineHTML = Object.entries(postsByMonth).map(([month, monthPosts]) => `
-                        <div class="timeline-item">
-                            <div class="timeline-date" onclick="toggleTimeline(this)">${month}</div>
-                            <div class="timeline-posts">
-                                ${monthPosts.map(post => `<a href="${post.path}" class="timeline-link">${post.title}</a>`).join('')}
-                            </div>
-                        </div>`).join('');
   
   const html = `<!DOCTYPE html>
 <html lang="zh-TW">
