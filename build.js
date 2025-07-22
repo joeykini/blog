@@ -21,12 +21,15 @@ marked.setOptions({
   mangle: false,
   sanitize: false,
 });
-renderer = new marked.Renderer();
+const renderer = new marked.Renderer();
 renderer.html = (html) => html;
 marked.use({ renderer });
 
 // --- 工具函数 ---
 function formatDate(date) {
+    if (!(date instanceof Date) || isNaN(date)) {
+        return '未知日期';
+    }
     return `${date.getFullYear()}年${String(date.getMonth() + 1).padStart(2, '0')}月${String(date.getDate()).padStart(2, '0')}日`;
 }
 
@@ -158,7 +161,6 @@ async function generateIndexHTML(posts) {
     console.log('✅ 首頁生成完成');
 }
 
-
 // --- 主構建流程 ---
 
 async function build() {
@@ -168,8 +170,11 @@ async function build() {
     await fs.remove(config.outputDir);
     await fs.ensureDir(config.outputDir);
 
-    // 2. 複製靜態文件 (CSS)
+    // 2. 複製靜態文件 (CSS 和 vercel.json)
     await fs.copy(config.stylesDir, path.join(config.outputDir, 'styles'));
+    if (await fs.pathExists('vercel.json')) {
+        await fs.copy('vercel.json', path.join(config.outputDir, 'vercel.json'));
+    }
 
     // 3. 處理所有 Markdown 文章
     const allPosts = [];
@@ -190,7 +195,7 @@ async function build() {
                 }
                 const date = new Date(data.date);
                 if (isNaN(date.getTime())) {
-                    console.warn(`[警告] 跳過 ${file}：無效的日期格式 "${data.date}"。`);
+                    console.warn(`[警告] 跳過 ${file}：無效的日期格式 "${data.date}"。請使用 YYYY-MM-DD 格式。`);
                     continue;
                 }
 
@@ -198,7 +203,7 @@ async function build() {
                     ...data,
                     date,
                     tags: Array.isArray(data.tags) ? data.tags : [],
-                    excerpt: data.excerpt || '',
+                    excerpt: data.excerpt || markdownContent.substring(0, 100).replace(/<[^>]*>/g, ''),
                     slug: data.slug || path.basename(file, '.md'),
                     content: marked(markdownContent),
                     path: `/posts/${data.slug || path.basename(file, '.md')}/`
