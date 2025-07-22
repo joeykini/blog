@@ -471,8 +471,8 @@ a:hover {
   border-radius: 8px;
   margin: var(--spacing-md) 0;
   width: 100%;
-  max-width: 600px;
-  height: 250px;
+  max-width: 500px;
+  height: 300px;
   border: none;
 }
 
@@ -484,8 +484,8 @@ a:hover {
 
 .spotify-container iframe {
   width: 100%;
-  max-width: 600px;
-  height: 250px;
+  max-width: 500px;
+  height: 300px;
   border: none;
   border-radius: 8px;
 }
