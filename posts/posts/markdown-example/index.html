@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown 格式和媒體嵌入示例 - Elias Sun</title>
+    <meta name="description" content="這篇文章展示了如何在部落格中使用各種 Markdown 格式和嵌入媒體內容。">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/jpeg" href="https://s3.bmp.ovh/imgs/2025/06/21/aa53503d0994dad6.jpg">
+</head>
+<body>
+    <main class="main">
+        <article class="post">
+            <header class="post-header">
+                <h1 class="post-title">Markdown 格式和媒體嵌入示例</h1>
+                <div class="post-meta">
+                    <time class="post-date" datetime="2025-01-01">2025年01月01日</time>
+                    <div class="post-tags">
+                        <span class="tag">#示例</span><span class="tag">#教程</span><span class="tag">#格式</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="post-content">
+                <h1>Markdown 格式和媒體嵌入示例</h1>
+<p>這篇文章將展示如何在您的部落格中使用各種 Markdown 格式和嵌入媒體內容。</p>
+<h2>基本格式</h2>
+<h3>文字強調</h3>
+<p>您可以使用<strong>粗體</strong>、<em>斜體</em>或<code>代碼</code>來強調重要內容。</p>
+<h3>標題層級</h3>
+<h1>一級標題</h1>
+<h2>二級標題</h2>
+<h3>三級標題</h3>
+<h4>四級標題</h4>
+<h2>列表格式</h2>
+<h3>無序列表</h3>
+<ul>
+<li>第一個項目</li>
+<li>第二個項目</li>
+<li>第三個項目</li>
+</ul>
+<h3>有序列表</h3>
+<ol>
+<li>第一個步驟</li>
+<li>第二個步驟</li>
+<li>第三個步驟</li>
+</ol>
+<h2>引用和代碼</h2>
+<h3>引用塊</h3>
+<blockquote>
+<p>這是一個引用塊的示例。<br>可以用來強調重要的內容或引用他人的話。</p>
+</blockquote>
+<h3>代碼塊</h3>
+<pre><code class="language-javascript">// 這是一個代碼塊的示例
+function hello() {
+    console.log(&quot;Hello, World!&quot;);
+}
+</code></pre>
+<h3>行內代碼</h3>
+<p>您可以使用 <code>console.log()</code> 來輸出內容。</p>
+<h2>媒體內容</h2>
+<h3>Spotify 音樂嵌入</h3>
+<h4>單曲</h4>
+<iframe src="https://open.spotify.com/embed/track/4iV5W9uYEdYUVa79Axb7Rh" 
+        height="152" 
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+        loading="lazy">
+</iframe>
+
+<h4>播放列表</h4>
+<iframe src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M" 
+        height="352" 
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+        loading="lazy">
+</iframe>
+
+<h3>YouTube 視頻嵌入</h3>
+<div class="video-container">
+    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+            title="YouTube video player" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+    </iframe>
+</div>
+
+<h2>圖片</h2>
+<h3>網絡圖片</h3>
+<p><img src="https://picsum.photos/800/400" alt="示例圖片"></p>
+<h2>表格</h2>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>語法</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>粗體</td>
+<td><code>**文字**</code></td>
+<td><strong>粗體文字</strong></td>
+</tr>
+<tr>
+<td>斜體</td>
+<td><code>*文字*</code></td>
+<td><em>斜體文字</em></td>
+</tr>
+<tr>
+<td>代碼</td>
+<td><code>`代碼`</code></td>
+<td><code>代碼</code></td>
+</tr>
+<tr>
+<td>連結</td>
+<td><code>[文字](URL)</code></td>
+<td><a href="https://example.com">連結</a></td>
+</tr>
+</tbody></table>
+<h2>分隔線</h2>
+<hr>
+<h2>如何獲取嵌入代碼</h2>
+<h3>Spotify 嵌入</h3>
+<ol>
+<li>在 Spotify 中找到您想分享的內容</li>
+<li>點擊&quot;...&quot;菜單</li>
+<li>選擇&quot;分享&quot; → &quot;嵌入曲目/專輯/播放列表&quot;</li>
+<li>複製嵌入代碼並貼到文章中</li>
+</ol>
+<h3>YouTube 嵌入</h3>
+<ol>
+<li>在 YouTube 上找到您想嵌入的視頻</li>
+<li>點擊&quot;分享&quot;按鈕</li>
+<li>選擇&quot;嵌入&quot;選項</li>
+<li>複製嵌入代碼並包裝在 <code>&lt;div class=&quot;video-container&quot;&gt;</code> 中</li>
+</ol>
+<h2>結語</h2>
+<p>通過這些格式，您可以創建豐富多彩的文章內容。記住要保持內容的相關性和適度性，這樣才能提供最佳的閱讀體驗。</p>
+<hr>
+<p><em>希望這個示例對您有幫助！</em> </p>
+
+            </div>
+        </article>
+        
+        <nav class="post-nav">
+            <a href="/" class="post-nav-link">← 返回首頁</a>
+        </nav>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Elias Sun.</p>
+    </footer>
+</body>
+</html>
