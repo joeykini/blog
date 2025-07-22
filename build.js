@@ -82,8 +82,7 @@ async function generatePostHTML(post) {
   const postDir = path.join(config.outputDir, 'posts', post.slug);
   await fs.ensureDir(postDir);
   
-  const html = `
-<!DOCTYPE html>
+  const html = `<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
     <meta charset="utf-8">
