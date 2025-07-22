@@ -478,8 +478,7 @@ a:hover {
 
 .spotify-container {
   margin: var(--spacing-md) 0;
-  display: flex;
-  justify-content: center;
+  display: block;
 }
 
 .spotify-container iframe {
