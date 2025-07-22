@@ -47,7 +47,7 @@ async function copyStaticFiles() {
   }
 }
 
-// 處理 Markdown 文章
+// 替換 processPosts 函數
 async function processPosts() {
   console.log('📝 處理文章...');
   
@@ -60,16 +60,27 @@ async function processPosts() {
   }
   
   const files = await fs.readdir(postsDir);
-  
+  console.log(`[Debug] 在 ${postsDir} 中發現 ${files.length} 個文件。`);
+
   for (const file of files) {
     if (path.extname(file) === '.md') {
+      console.log(`[Debug] 正在處理文件: ${file}`);
       const filePath = path.join(postsDir, file);
       const content = await fs.readFile(filePath, 'utf-8');
       const { data, content: markdownContent } = matter(content);
       
-      // 解析日期
+      // 健壯性檢查
+      if (!data.date) {
+          console.warn(`[警告] 跳過 ${file}：缺少 'date' 字段。`);
+          continue;
+      }
       const date = new Date(data.date);
-      
+      if (isNaN(date.getTime())) {
+          console.warn(`[警告] 跳過 ${file}：無效的日期格式 "${data.date}"。請確保使用 YYYY-MM-DD 格式。`);
+          continue;
+      }
+      // 檢查結束
+
       const post = {
         ...data,
         date,
@@ -80,11 +91,11 @@ async function processPosts() {
       
       posts.push(post);
       
-      // 生成文章 HTML
       await generatePostHTML(post);
     }
   }
   
+  console.log(`[Debug] 成功處理了 ${posts.length} 篇文章。`);
   return posts.sort((a, b) => b.date - a.date);
 }
 
@@ -139,10 +150,17 @@ async function generatePostHTML(post) {
   console.log(`✅ 生成文章: ${post.title}`);
 }
 
-// 生成首頁
+// 修改 generateIndex 函數，增加日誌
 async function generateIndex(posts) {
-  console.log('🏠 生成首頁...');
-  
+  // --- 新增日誌 ---
+  console.log('🏠 正在生成首頁...');
+  console.log('[Debug] 用於生成首頁的文章列表:');
+  posts.forEach(p => console.log(`  - 標題: ${p.title}, 日期: ${p.date.toISOString()}`));
+  if (posts.length === 0) {
+      console.warn('[警告] 沒有任何文章被傳入來生成首頁！');
+  }
+  // --- 日誌添加結束 ---
+
   // 按月份分組文章
   const postsByMonth = {};
   posts.forEach(post => {
