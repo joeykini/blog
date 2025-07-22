@@ -6,8 +6,19 @@ const { marked } = require('marked');
 // 配置 marked 以允許 HTML 標籤
 marked.setOptions({
   breaks: true,
-  gfm: true
+  gfm: true,
+  headerIds: false,
+  mangle: false,
+  sanitize: false
 });
+
+// 自定義渲染器以保留 HTML
+const renderer = new marked.Renderer();
+renderer.html = function(html) {
+  return html;
+};
+
+marked.use({ renderer });
 
 // 配置
 const config = {
