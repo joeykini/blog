@@ -470,10 +470,26 @@ a:hover {
 .post-content iframe[src*="spotify"] {
   border-radius: 8px;
   margin: var(--spacing-md) 0;
+  width: 100%;
+  max-width: 400px;
+  height: 152px;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .spotify-container {
   margin: var(--spacing-md) 0;
+  display: flex;
+  justify-content: center;
+}
+
+.spotify-container iframe {
+  width: 100%;
+  max-width: 400px;
+  height: 152px;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* Images */
