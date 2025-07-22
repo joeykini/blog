@@ -3,6 +3,12 @@ const path = require('path');
 const matter = require('gray-matter');
 const { marked } = require('marked');
 
+// 配置 marked 以允許 HTML 標籤
+marked.setOptions({
+  breaks: true,
+  gfm: true
+});
+
 // 配置
 const config = {
   contentDir: 'content',
