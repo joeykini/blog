@@ -25,8 +25,9 @@ Thumbs.db
 *.log
 
 # Local articles (not to be pushed to GitHub)
-posts/minimalist-design-principles/
-posts/multimedia-example/
+content/posts/minimalist-design-principles.md
+content/posts/multimedia-example.md
+new-post-template.md
 
 # Build artifacts
 output/
