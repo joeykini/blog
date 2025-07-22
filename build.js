@@ -107,32 +107,26 @@ async function generatePostHTML(post) {
     <link rel="icon" type="image/jpeg" href="https://s3.bmp.ovh/imgs/2025/06/21/aa53503d0994dad6.jpg">
 </head>
 <body>
-    <nav class="nav">
-        <div class="nav-container">
-            <a href="/" class="nav-home">← 回到首頁</a>
-        </div>
-    </nav>
-
     <main class="main">
-        <div class="container">
-            <article class="article">
-                <header class="article-header">
-                    <h1 class="article-title">${post.title}</h1>
-                    <div class="article-meta">
-                        <time class="article-date" datetime="${post.date.toISOString().split('T')[0]}">
-                            ${post.date.getFullYear()}年${String(post.date.getMonth() + 1).padStart(2, '0')}月${String(post.date.getDate()).padStart(2, '0')}日
-                        </time>
-                        <div class="article-tags">
-                            ${post.tags.map(tag => `<span class="tag">#${tag}</span>`).join('')}
-                        </div>
+        <article class="post">
+            <header class="post-header">
+                <h1 class="post-title">${post.title}</h1>
+                <div class="post-meta">
+                    <time class="post-date" datetime="${post.date.toISOString().split('T')[0]}">${post.date.getFullYear()}年${String(post.date.getMonth() + 1).padStart(2, '0')}月${String(post.date.getDate()).padStart(2, '0')}日</time>
+                    <div class="post-tags">
+                        ${post.tags.map(tag => `<span class="tag">#${tag}</span>`).join('')}
                     </div>
-                </header>
-
-                <div class="article-content">
-                    ${post.content}
                 </div>
-            </article>
-        </div>
+            </header>
+
+            <div class="post-content">
+                ${post.content}
+            </div>
+        </article>
+        
+        <nav class="post-nav">
+            <a href="/" class="post-nav-link">← 返回首頁</a>
+        </nav>
     </main>
 
     <footer class="footer">
