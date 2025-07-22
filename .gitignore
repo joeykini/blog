@@ -35,3 +35,7 @@ tmp/
 
 # Vercel
 .vercel 
+
+# 忽略指定的文章
+content/posts/markdown-example.md
+content/posts/welcome-to-minimal-blog.md 
